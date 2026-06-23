@@ -51,22 +51,27 @@ class SewaStandar extends Penyewaan {
     }
     
     /**
-     * Implementasi metode abstrak hitungTotalTarif()
-     * Menghitung total tarif untuk layanan standar (sementara)
+     * Implementasi Overriding metode abstrak hitungTotalTarif()
+     * Menghitung total tarif untuk layanan standar dengan rumus:
+     * (tarif_dasar_perhari * durasi_hari) + biaya_makan_sopir
      * 
-     * @return float Total tarif penyewaan
+     * @return float Total tarif penyewaan standar
      */
     public function hitungTotalTarif() {
-        // Implementasi sementara
-        return 0;
+        return ($this->tarif_dasar_perhari * $this->durasi_hari) + $this->biaya_makan_sopir;
     }
     
     /**
-     * Implementasi metode abstrak tampilkanInfoLayanan()
-     * Menampilkan informasi layanan standar (sementara)
+     * Implementasi Overriding metode abstrak tampilkanInfoLayanan()
+     * Menampilkan informasi lengkap layanan standar dengan sopir
+     * 
+     * @return string Informasi layanan standar
      */
     public function tampilkanInfoLayanan() {
-        // Implementasi sementara
+        // Format biaya makan sopir ke format Rupiah
+        $biaya_format = number_format($this->biaya_makan_sopir, 0, ',', '.');
+        
+        return "Layanan: Standar (Dengan Sopir) | Sopir: {$this->nama_sopir} | Uang Makan: Rp{$biaya_format}";
     }
 }
 ?>

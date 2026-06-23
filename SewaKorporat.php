@@ -51,22 +51,24 @@ class SewaKorporat extends Penyewaan {
     }
     
     /**
-     * Implementasi metode abstrak hitungTotalTarif()
-     * Menghitung total tarif untuk layanan korporat (sementara)
+     * Implementasi Overriding metode abstrak hitungTotalTarif()
+     * Menghitung total tarif untuk layanan korporat dengan diskon 15% dari biaya dasar.
+     * Rumus: (tarif_dasar_perhari * durasi_hari) * 0.85
      * 
-     * @return float Total tarif penyewaan
+     * @return float Total tarif penyewaan korporat dengan diskon
      */
     public function hitungTotalTarif() {
-        // Implementasi sementara
-        return 0;
+        return ($this->tarif_dasar_perhari * $this->durasi_hari) * 0.85;
     }
     
     /**
-     * Implementasi metode abstrak tampilkanInfoLayanan()
-     * Menampilkan informasi layanan korporat (sementara)
+     * Implementasi Overriding metode abstrak tampilkanInfoLayanan()
+     * Menampilkan informasi lengkap layanan korporat dengan diskon
+     * 
+     * @return string Informasi layanan korporat
      */
     public function tampilkanInfoLayanan() {
-        // Implementasi sementara
+        return "Layanan: Korporat | Perusahaan: {$this->nama_pelanggan} | NPWP: {$this->npwp_perusahaan} | Kontrak: {$this->nama_kontrak} (Diskon Korporasi 15%)";
     }
 }
 ?>

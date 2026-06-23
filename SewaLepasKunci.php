@@ -51,22 +51,26 @@ class SewaLepasKunci extends Penyewaan {
     }
     
     /**
-     * Implementasi metode abstrak hitungTotalTarif()
-     * Menghitung total tarif untuk layanan lepas kunci (sementara)
+     * Implementasi Overriding metode abstrak hitungTotalTarif()
+     * Menghitung total tarif untuk layanan lepas kunci dengan biaya administrasi flat.
+     * Rumus: (tarif_dasar_perhari * durasi_hari) + 50000
      * 
-     * @return float Total tarif penyewaan
+     * @return float Total tarif penyewaan lepas kunci dengan administrasi
      */
     public function hitungTotalTarif() {
-        // Implementasi sementara
-        return 0;
+        return ($this->tarif_dasar_perhari * $this->durasi_hari) + 50000;
     }
     
     /**
-     * Implementasi metode abstrak tampilkanInfoLayanan()
-     * Menampilkan informasi layanan lepas kunci (sementara)
+     * Implementasi Overriding metode abstrak tampilkanInfoLayanan()
+     * Menampilkan informasi lengkap layanan lepas kunci tanpa sopir
+     * 
+     * @return string Informasi layanan lepas kunci
      */
     public function tampilkanInfoLayanan() {
-        // Implementasi sementara
+        $jaminan_format = number_format($this->jaminan_keamanan, 0, ',', '.');
+        
+        return "Layanan: Lepas Kunci (Tanpa Sopir) | No. SIM: {$this->nomor_sim} | Jaminan: Rp{$jaminan_format}";
     }
 }
 ?>
