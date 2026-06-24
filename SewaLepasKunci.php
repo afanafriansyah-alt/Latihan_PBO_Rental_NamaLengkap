@@ -68,9 +68,9 @@ class SewaLepasKunci extends Penyewaan {
      * @return string Informasi layanan lepas kunci
      */
     public function tampilkanInfoLayanan() {
-        $jaminan_format = number_format($this->jaminan_keamanan, 0, ',', '.');
-        
-        return "Layanan: Lepas Kunci (Tanpa Sopir) | No. SIM: {$this->nomor_sim} | Jaminan: Rp{$jaminan_format}";
+        // PENTING: $jaminan_keamanan dan $nomor_sim adalah string, bukan angka
+        // Jangan gunakan number_format() pada properti string
+        return "Layanan: Lepas Kunci (Tanpa Sopir) | No. SIM: {$this->nomor_sim} | Jaminan: {$this->jaminan_keamanan}";
     }
 }
 ?>

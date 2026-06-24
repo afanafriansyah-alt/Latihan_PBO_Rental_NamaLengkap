@@ -303,14 +303,28 @@ $dataLepasKunci = SewaLepasKunci::getDaftarLepasKunci($db);
                             <?php foreach ($dataLepasKunci as $row): ?>
                                 <?php
                                 // Instansiasi objek SewaLepasKunci dengan data array
+                                // URUTAN ARGUMEN CONSTRUCTOR (PENTING!):
+                                // 1. $id_sewa (integer) - dari kolom 'id_sewa'
+                                // 2. $nama_pelanggan (string) - dari kolom 'nama_pelanggan'
+                                // 3. $merk_kendaraan (string) - dari kolom 'merk_kendaraan'
+                                // 4. $durasi_hari (integer) - dari kolom 'durasi_hari'
+                                // 5. $tarif_dasar_perhari (float) - dari kolom 'tarif_dasar_perhari'
+                                // 6. $jaminan_keamanan (string!) - dari kolom 'jaminan_keamanan' [BUKAN angka]
+                                // 7. $nomor_sim (string) - dari kolom 'nomor_sim'
+                                
+                                // Validasi tipe data untuk menghindari error
+                                $id_sewa = (int)$row['id_sewa'];
+                                $durasi_hari = (int)$row['durasi_hari'];
+                                $tarif_dasar_perhari = (float)$row['tarif_dasar_perhari'];
+                                
                                 $sewaLepasKunci = new SewaLepasKunci(
-                                    $row['id_sewa'],
-                                    $row['nama_pelanggan'],
-                                    $row['merk_kendaraan'],
-                                    $row['durasi_hari'],
-                                    $row['tarif_dasar_perhari'],
-                                    $row['jaminan_keamanan'],
-                                    $row['nomor_sim']
+                                    $id_sewa,
+                                    $row['nama_pelanggan'],           // string
+                                    $row['merk_kendaraan'],           // string
+                                    $durasi_hari,                     // integer
+                                    $tarif_dasar_perhari,             // float
+                                    $row['jaminan_keamanan'],         // string (bukan angka!)
+                                    $row['nomor_sim']                 // string
                                 );
                                 
                                 // Hitung total tarif menggunakan polimorfisme
